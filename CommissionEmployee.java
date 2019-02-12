@@ -3,7 +3,7 @@ package edu.brandeis.rseg102.oop;
 // Fig. 9.10: CommissionEmployee.java
 // CommissionEmployee class uses methods to manipulate its 
 // private instance variables.
-public class CommissionEmployee
+public class CommissionEmployee implements Payable
 {
    private String firstName;
    private String lastName;
@@ -84,7 +84,7 @@ public class CommissionEmployee
    } // end method getCommissionRate
 
    // calculate earnings
-   public double earnings()
+   public double getPaymentAmount()
    {
       return getCommissionRate() * getGrossSales();
    } // end method earnings

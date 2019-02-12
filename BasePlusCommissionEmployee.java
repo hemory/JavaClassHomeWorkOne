@@ -1,6 +1,6 @@
 package edu.brandeis.rseg102.oop;
 
-public class BasePlusCommissionEmployee
+public class BasePlusCommissionEmployee implements Payable
 {
     private double baseSalary; // base salary per week
     private CommissionEmployee commissionEmployee;
@@ -85,17 +85,22 @@ public class BasePlusCommissionEmployee
         return baseSalary;
     }
 
+    public double getBaseSalaryPlusIncrease(double baseSalary) {
+        return baseSalary + (baseSalary * .10);
+    }
+
+
     // calculate base-salaried commission employee's earnings
-    public double earnings()
+    public double getPaymentAmount()
     {
-        return getBaseSalary() + commissionEmployee.earnings();
+        return getBaseSalaryPlusIncrease(baseSalary) + commissionEmployee.getPaymentAmount();
     }
 
     // return String representation of BasePlusCommissionEmployee
     @Override
     public String toString()
     {
-        return String.format( "%s %s\n%s: %.2f", "base-salaried",
-                commissionEmployee.toString(), "base salary", getBaseSalary() );
+        return String.format( "%s %s\n%s: %.2f \n%s: %.2f", "base-salaried",
+                commissionEmployee.toString(), " base salary", getBaseSalary(), "new base salary plus 10% commission", getBaseSalaryPlusIncrease(baseSalary));
     } // end method toString
 }
